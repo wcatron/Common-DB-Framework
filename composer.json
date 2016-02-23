@@ -1,5 +1,5 @@
 {
-  "name": "wcatron/CommonDBFramework",
+  "name": "wcatron/common-db-framework",
   "description": "Common classes shared between DB Frameworks that want to link between each other.",
   "license": "MIT",
   "keywords": ["Common","ODM","Object Based","PHP","Database","Framework"],
