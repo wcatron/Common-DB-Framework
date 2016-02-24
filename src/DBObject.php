@@ -2,17 +2,17 @@
 
 namespace wcatron\CommonDBFramework;
 
-abstract class DBObject {
+interface DBObject {
     /**
      * @return string
      */
-    abstract public function getID();
+    public function getID();
 
     /**
      * @param string
      * @return static|bool
      */
-    abstract public static function getByID($id);
+    public static function getByID($id);
 }
 
 ?>
