@@ -6,7 +6,7 @@ abstract class DB {
     /**
      * @var array Contains configuration data dependant on parent database type.
      */
-    private $config;
+    protected $config;
     /**
      * @return string
      */
