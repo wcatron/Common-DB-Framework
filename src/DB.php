@@ -2,7 +2,7 @@
 
 namespace wcatron\CommonDBFramework;
 
-class DB {
+abstract class DB {
     /**
      * @var array Contains configuration data dependant on parent database type.
      */
