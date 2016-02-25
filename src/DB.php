@@ -2,27 +2,29 @@
 
 namespace wcatron\CommonDBFramework;
 
-abstract class DB {
+class DB {
     /**
      * @var array Contains configuration data dependant on parent database type.
      */
     protected $config;
     /**
-     * @return string
+     * @var DB[]
      */
-    private static $instance;
+    private static $instances = [];
     /**
      * Gets the singleton instance of the DB. Used throughout the framework.
      * @return static Returns the singlton DB object.
      */
     public static function getInstance($connect = true) {
-        if (null === static::$instance) {
-            static::$instance = new static();
+        if (!isset(self::$instances[static::class])) {
+            self::$instances[static::class] = new static();
         }
+        /** @var DB $instance */
+        $instance = self::$instances[static::class];
         if ($connect) {
-            static::$instance->connect();
+            $instance->connect();
         }
-        return static::$instance;
+        return$instance;
     }
 
     public static function configure($config) {
@@ -30,6 +32,34 @@ abstract class DB {
     }
 
     function connect() {
+    }
+
+    /**
+     * Protected constructor to prevent creating a new instance of the
+     * *Singleton* via the `new` operator from outside of this class.
+     */
+    protected function __construct()
+    {
+    }
+
+    /**
+     * Private clone method to prevent cloning of the instance of the
+     * *Singleton* instance.
+     *
+     * @return void
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * Private unserialize method to prevent unserializing of the *Singleton*
+     * instance.
+     *
+     * @return void
+     */
+    private function __wakeup()
+    {
     }
 
 }
