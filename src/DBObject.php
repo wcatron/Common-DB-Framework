@@ -14,6 +14,14 @@ abstract class DBObject {
     public function getID() {
 
     }
+
+    /**
+     * @param $id string
+     * @return static
+     */
+    public function getByID($id) {
+
+    }
     /**
      * @return DB
      */
