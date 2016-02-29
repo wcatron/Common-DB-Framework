@@ -24,13 +24,22 @@ abstract class DB {
         if ($connect) {
             $instance->connect();
         }
-        return$instance;
+        return $instance;
     }
 
     public static function configure($config) {
         static::getInstance(false)->config = $config;
     }
 
+    public static function unconfigure() {
+        if (isset(self::$instances[static::class])) {
+            unset(self::$instances[static::class]);
+        }
+    }
+
+    /**
+     * Lazily called when DB object is needed. Uses $this->config array to connect.
+     */
     function connect() {
     }
 

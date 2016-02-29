@@ -2,14 +2,14 @@
 
 use wcatron\CommonDBFramework\DB;
 
-class TestDB extends DB {
+class OtherDB extends DB {
     var $db = false;
 
     function connect() {
         if ($this->db == false) {
-            echo "Connecting... ";
+            echo "Connecting to other... ";
             $this->db = true;
-            echo "Connected.";
+            echo "Connected to other.";
         }
     }
 
@@ -19,12 +19,12 @@ class TestDB extends DB {
         if ($id == "1") {
             $object->fromArray([
                                    "id"    => "1",
-                                   "field" => "test"
+                                   "field" => "other"
                                ]);
         } else if ($id == "2") {
             $object->fromArray([
                                    "id"    => "2",
-                                   "field" => "test"
+                                   "field" => "other"
                                ]);
         }
         return $object;
